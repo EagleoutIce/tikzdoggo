@@ -60,10 +60,56 @@
 \newcommand*\doggo[1][]{\begingroup
 \pgfqkeys{/doggo}{defaults, #1}%
 \scope[/doggo/@doggo,/doggo/@doggo@main]
-   \doggo@block[rounded corners=.3mm]{\doggo@color@body@main} (180:3.45mm) to[bend left=33] coordinate[pos=.1] (collar-ul) coordinate[pos=.19] (collar-ul2) ++(-.425cm,-.26cm) to[bend right=11] ++(-.945cm,.1mm) arc (90:184:3.35mm and 2.9mm) coordinate[pos=.415] (tail-lr) coordinate[pos=.845] (tail-ll) arc (184:320:2.35mm and 7.6mm) coordinate[pos=.442] (leg-right-low) coordinate[pos=.786] (leg-right-high) coordinate[pos=.895] (leg-left-low) to[bend left=26] coordinate[pos=.54] (leg-left-high) ++(4.9mm,1.15mm) to[bend right=15] coordinate[pos=.75] (fluff-1) coordinate[pos=.895] (fluff-2) coordinate[pos=.811] (fluff-3) ++(6.25mm,-1.25mm)
-   to[bend left=5] ++(.1mm,-7mm) to[bend right] [sharp corners] ++(.5mm,-1mm)
+% drawing the main doggo
+   \doggo@block[rounded corners=.3mm]{\doggo@color@body@main}
+   % start at back of ead
+   (180:3.45mm) to[bend left=33]
+      coordinate[pos=.1] (collar-ul)
+      coordinate[pos=.19] (collar-ul2)
+   ++(-.425cm,-.26cm)
+   % the dog back
+   to[bend right=11] ++(-.945cm,.1mm)
+   % the butt
+   arc (90:184:3.35mm and 2.9mm)
+      coordinate[pos=.415] (tail-lr)
+      coordinate[pos=.845] (tail-ll)
+   % the right back leg stump
+   arc (184:320:2.35mm and 7.6mm)
+      coordinate[pos=.442] (leg-right-low)
+      coordinate[pos=.786] (leg-right-high)
+      coordinate[pos=.895] (leg-left-low)
+   to[bend left=26]
+      coordinate[pos=.54] (leg-left-high)
+   % the higher belly
+   ++(4.9mm,1.15mm)
+   % the lower belly
+   to[bend right=15]
+      coordinate[pos=.75] (fluff-1)
+      coordinate[pos=.895] (fluff-2)
+      coordinate[pos=.811] (fluff-3)
+   ++(6.25mm,-1.25mm)
+   % the front right leg
+   to[bend left=5] ++(.1mm,-7mm)
+   to[bend right] [sharp corners] ++(.5mm,-1mm)
    % right front foot
-   arc(-170:80:1.23mm and .4mm) [rounded corners=.3mm] -++(-.475mm,.15mm) to[bend left=12] ++(.1mm,6.85mm) to[bend right=7] coordinate[pos=.3] (leg-front-left)  coordinate[pos=.9] (collar-ur) coordinate[pos=.85] (collar-ur2) ++(4.06mm,9.05mm) coordinate (mouth-start) to[out=-3,in=260] ++(3.85mm,1.33mm) coordinate (nose-ur) to[bend left=1] ++(-2.25mm,1.15mm) arc(-3:170:2.98mm and 2.9mm) coordinate[pos=.255] (ear-a) coordinate[pos=.585] (ear-b) -- cycle;
+   arc(-170:80:1.23mm and .4mm) [rounded corners=.3mm]
+   -++(-.475mm,.15mm)
+   to[bend left=12] ++(.1mm,6.85mm)
+   % leg front side
+   to[bend right=7]
+      coordinate[pos=.3] (leg-front-left)
+      coordinate[pos=.9] (collar-ur)
+      coordinate[pos=.85] (collar-ur2)
+   ++(4.06mm,9.05mm)
+      coordinate (mouth-start)
+   to[out=-3,in=260] ++(3.85mm,1.33mm)
+      coordinate (nose-ur)
+   to[bend left=1] ++(-2.25mm,1.15mm)
+   % the head for great bonks
+   arc(-3:170:2.98mm and 2.9mm)
+      coordinate[pos=.255] (ear-a)
+      coordinate[pos=.585] (ear-b)
+   -- cycle;
    \doggo@block[rounded corners=.35mm]{\doggo@color@body@main} (leg-right-low) to[bend left=17] ++(-.325mm,-3.125mm) to[bend right=5] [sharp corners] ++(.89mm,-2.865mm) {[rotate=-5]
    arc[start angle=-170, end angle=94, x radius=1.2mm, y radius=.41mm]}
    [rounded corners=.35mm]
