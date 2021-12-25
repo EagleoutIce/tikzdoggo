@@ -7,14 +7,15 @@
 
 \def\doggo{%
 \scope% [opacity=.8]
-   \filldraw[rounded corners=.3mm,brown] (180:3.45mm) to[bend left=33] coordinate[pos=.1] (collar-ul) coordinate[pos=.19] (collar-ul2) ++(-.425cm,-.26cm) to[bend right=11] ++(-.945cm,.1mm) arc (90:184:3.35mm and 2.9mm) coordinate[pos=.285] (tail-lr) coordinate[pos=.885] (tail-ll) arc (184:320:2.35mm and 7.6mm) coordinate[pos=.412] (leg-right-low) coordinate[pos=.742] (leg-right-high) coordinate[pos=.895] (leg-left-low) to[bend left=26] coordinate[pos=.54] (leg-left-high) ++(4.9mm,1.15mm) to[bend right=15] coordinate[pos=.75] (fluff-1) coordinate[pos=.895] (fluff-2) coordinate[pos=.811] (fluff-3) ++(6.25mm,-1.25mm)
+   \filldraw[rounded corners=.3mm,brown] (180:3.45mm) to[bend left=33] coordinate[pos=.1] (collar-ul) coordinate[pos=.19] (collar-ul2) ++(-.425cm,-.26cm) to[bend right=11] ++(-.945cm,.1mm) arc (90:184:3.35mm and 2.9mm) coordinate[pos=.415] (tail-lr) coordinate[pos=.845] (tail-ll) arc (184:320:2.35mm and 7.6mm) coordinate[pos=.446] (leg-right-low) coordinate[pos=.786] (leg-right-high) coordinate[pos=.895] (leg-left-low) to[bend left=26] coordinate[pos=.54] (leg-left-high) ++(4.9mm,1.15mm) to[bend right=15] coordinate[pos=.75] (fluff-1) coordinate[pos=.895] (fluff-2) coordinate[pos=.811] (fluff-3) ++(6.25mm,-1.25mm)
    to[bend left=5] ++(.1mm,-7mm) to[bend right] [sharp corners] ++(.5mm,-1mm)
    % right front foot
    arc(-170:80:1.23mm and .4mm) [rounded corners=.3mm] -++(-.475mm,.15mm) to[bend left=12] ++(.1mm,6.85mm) to[bend right=7] coordinate[pos=.3] (leg-front-left)  coordinate[pos=.9] (collar-ur) coordinate[pos=.85] (collar-ur2) ++(4.06mm,9.05mm) coordinate (mouth-start) to[out=-3,in=260] ++(3.85mm,1.33mm) coordinate (nose-ur) to[bend left=1] ++(-2.25mm,1.15mm) arc(-3:170:2.98mm and 2.9mm) coordinate[pos=.255] (ear-a) coordinate[pos=.585] (ear-b) -- cycle;
-   \filldraw[rounded corners=.35mm,brown] (leg-right-low) to[bend left=17] ++(.375mm,-3.125mm) to[bend right=5] [sharp corners] ++(.465mm,-2.865mm) arc(-190:94:1.2mm and .41mm) [rounded corners=.35mm] to[bend left=9] ++(-.375mm,2.26mm) to[bend left=15] (leg-right-high);
+   \filldraw[rounded corners=.35mm,brown] (leg-right-low) to[bend left=17] ++(-.225mm,-3.125mm) to[bend right=5] ++(.665mm,-2.865mm) coordinate(leg-right-foot-start) -- ++(1.1mm, .36mm)coordinate(leg-right-foot-end) to[bend left=9] ++(-.515mm,2.26mm) to[bend left=15] (leg-right-high);
+   \filldraw[brown] (leg-right-foot-start) arc[start angle=-190, end angle=94, x radius=1.2mm, y radius=.41mm, rotate=-70]
    \pgfonlayer{background}
-   \filldraw[rounded corners=.35mm,brown!90!doggo-black] (leg-left-low) to[out=-81,in=-90,looseness=1.7] coordinate[pos=.125] (leg-left-low2) coordinate[pos=.5] (leg-left-high2) ([yshift=1mm]leg-left-high) to[bend right=50] cycle;
-   \filldraw[rounded corners=.35mm,brown!90!doggo-black] (leg-left-low2) to[bend left=9] ++(-.25mm,-2.5mm) to[bend right=6] [sharp corners] ++(.45mm,-2.1mm) arc(-190:94:1.2mm and .41mm) [rounded corners=.35mm] to[bend left=9] ++(-.475mm,2mm) to[bend left=14] (leg-left-high2);
+   \filldraw[rounded corners=.35mm,brown!90!doggo-black] (leg-left-low) to[out=-81,in=-90,looseness=1.7] coordinate[pos=.123] (leg-left-low2) coordinate[pos=.51] (leg-left-high2) ([yshift=1mm]leg-left-high) to[bend right=50] cycle;
+   \filldraw[rounded corners=.35mm,brown!90!doggo-black] (leg-left-low2) to[bend left=9] ++(-.45mm,-2.5mm) to[bend right=6] [sharp corners] ++(.65mm,-2.1mm) arc(-190:94:1.2mm and .41mm) [rounded corners=.35mm] to[bend left=9] ++(-.645mm,2mm) to[bend left=14] (leg-left-high2);
    \filldraw[rounded corners=.35mm,brown!90!doggo-black] (leg-front-left) to[bend right=14] ++(-1.9mm,-8.025mm) arc(90:-170:1.35mm and .41mm) to[bend left=25] cycle;
    \endpgfonlayer
    \filldraw[brown,rounded corners=.4mm] (tail-ll) arc(260:50:2.77mm and 3.215mm) to[out=165,in=201,looseness=2.3] (tail-lr);
@@ -31,8 +32,8 @@
 \draw[doggo-black!80!brown,very thin] (nose-ur)++(0,-.95mm) to[out=186,in=-6] ++(-6.35mm,.533mm);
 \endscope
 % eye
-\fill[white] (.12,.1175) ellipse[x radius=.435mm,y radius=.6mm];
-\fill[doggo-black] (.1275,.1175) ellipse[x radius=.255mm,y radius=.42mm];
+\fill[white] (.134,.1175) ellipse[x radius=.445mm,y radius=.58mm];
+\fill[doggo-black] (.1415,.1175) ellipse[x radius=.265mm,y radius=.38mm];
 % collar
 \filldraw[blue!60!brown,rounded corners=.05mm] (collar-ul) to[bend right=9] ([xshift=.05mm]collar-ur) -- ([xshift=.05mm]collar-ur2) coordinate[pos=.5] (collar-uc) to[bend left=9] (collar-ul2) -- cycle;
 \draw[yellow!60!brown] ([xshift=.275mm,yshift=-.125mm]collar-uc) circle[radius=.266mm];
