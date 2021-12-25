@@ -24,8 +24,9 @@
   /doggo/.search also={/tikz,/pgf}, /doggo/.cd,%
   name/.code                    = \def\doggo@name{#1},
   @doggo@all/.style             = {},
-  @block/.style                 = {/doggo/@doggo@all=#1, draw=#1,fill=#1},
-  @draw/.style                  = {/doggo/@doggo@all=#1, cap=round, draw=#1},
+  @block/.style                 = {/doggo/@doggo@all=#1,draw=#1,fill=#1},
+  @fill/.style                  = {/doggo/@doggo@all=#1,fill=#1},
+  @draw/.style                  = {/doggo/@doggo@all=#1,line cap=round,draw=#1},
   @text/.style                  = {transform shape,text=\doggo@color@body@main},
   @doggo/.style = {}, @doggo@main/.style = {},
   % body
@@ -35,13 +36,16 @@
   height delta/.code            = \setlength{\doggo@h@delta}{#1},
   % nose
   nose/.code                    = \doggo@color{nose}{#1},
+  % eye
+  eye/.code                     = \doggo@color{eye}{#1},
+  eye back/.code                = \doggo@color{eye@back}{#1},
   % collar
   collar/.code                  = \doggo@color{collar}{#1},
   collar ring/.code             = \doggo@color{collar@ring}{#1},
   defaults/.style               = {%
     name=doggo, body main=doggo@brown, body back=doggo@darker@brown,
     collar=blue!60!doggo@brown,collar ring=yellow!60!doggo@brown,
-    height delta=0pt,nose=doggo@black,%
+    height delta=0pt,nose=doggo@black,eye=doggo@black,eye back=white,%
     user defaults%
   },
   user defaults/.style = {},
@@ -55,6 +59,8 @@
 \def\doggo@path@[#1]#2#3;{\protected@edef\@tmp{#2}\ifx\@tmp\@doggo@none\else\path[#1,#2] #3;\fi}
 \long\def\doggo@block{\@dblarg\doggo@block@}
 \def\doggo@block@[#1]#2#3;{\protected@edef\@tmp{#2}\ifx\@tmp\@doggo@none\else\path[#1,/doggo/@block=#2] #3;\fi}
+\long\def\doggo@fill{\@dblarg\doggo@fill@}
+\def\doggo@fill@[#1]#2#3;{\protected@edef\@tmp{#2}\ifx\@tmp\@doggo@none\else\path[#1,/doggo/@fill=#2] #3;\fi}
 \long\def\doggo@draw{\@dblarg\doggo@draw@}
 \def\doggo@draw@[#1]#2#3;{\protected@edef\@tmp{#2}\ifx\@tmp\@doggo@none\else\path[#1,/doggo/@draw=#2] #3;\fi}
 % #endregion
@@ -133,16 +139,17 @@
 \doggo@block[rounded corners=.35mm]{doggo@brown!82!doggo@black} (ear-b) to[bend right=11] ++(-.285mm,1.5mm) to[bend right=11] ++(-1.225mm,-2.315mm) to[bend left=14] cycle;
    % \filldraw (ear-b) circle[radius=2mm];
 \scope
-\clip[rounded corners=.35mm] ([xshift=.1mm,yshift=.035mm]mouth-start) to[out=-3,in=260] ++(3.85mm,1.33mm) to[bend left=1] ++(-2.25mm,1.15mm) to[bend right=30] cycle;
+\clip[rounded corners=.35mm] ([xshift=.08mm,yshift=.035mm]mouth-start) to[out=-3,in=260] ++(3.85mm,1.33mm) to[bend left=1] ++(-2.25mm,1.15mm) to[bend right=30] cycle;
 % nose
 \doggo@block{\doggo@color@nose} (nose-ur) ellipse[x radius=.45mm,y radius=.5mm];
-\doggo@draw[very thin,opacity=.9]{doggo@black!80!doggo@brown} (nose-ur)++(0,-.95mm) to[out=186,in=-6] ++(-6.35mm,.533mm);
+\doggo@draw[very thin,opacity=.9]{doggo@black!80!doggo@brown} (nose-ur)++(-.35mm,-.985mm) to[out=186,in=-10] ++(-3.3mm,.2mm);
 \endscope
+% \doggo@fill{doggo@black!80!doggo@brown} (nose-ur)++(-.35mm,-.95mm) circle[radius=.05mm];
 % eye
 \scope
-\fill[white,save path=\eyepath] (.18,.1175)++(-.565mm,0) to[bend left] ++(.75mm,.4mm) to[bend left] ++(-.04mm,-.866mm) to[bend left] cycle;
+\doggo@fill[save path=\eyepath]{\doggo@color@eye@back} (.18,.1175)++(-.565mm,0) to[bend left] ++(.75mm,.4mm) to[bend left] ++(-.04mm,-.866mm) to[bend left] cycle;
 \clip[use path=\eyepath];
-\fill[doggo@black] (.15,.1135) arc(180:1:.5mm and .43mm) arc (1:-180:.5mm and .43mm);
+\doggo@fill{\doggo@color@eye} (.15,.1135) arc(180:1:.5mm and .43mm) arc (1:-180:.5mm and .43mm);
 \endscope
 % collar
 \doggo@block[rounded corners=.05mm]{\doggo@color@collar} (collar-ul) to[bend right=9] ([xshift=.05mm]collar-ur) -- ([xshift=.05mm]collar-ur2) coordinate[pos=.5] (collar-uc) to[bend left=9] (collar-ul2) -- cycle;
