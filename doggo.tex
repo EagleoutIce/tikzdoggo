@@ -7,7 +7,10 @@
 \begin{document}
 \preview
 \begin{tikzpicture}
-   \doggo[collar=purple]
-\end{tikzpicture}
+   \doggo[collar=purple,height delta=-.5mm]
+\end{tikzpicture}~~%
+\reflectbox{\begin{tikzpicture}
+   \doggo[height delta=.1mm,body=black!50!gray!85!doggo@brown]
+\end{tikzpicture}}
 \endpreview
 \end{document}

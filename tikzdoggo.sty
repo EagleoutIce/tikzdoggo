@@ -13,7 +13,6 @@
 \def\@doggo@color@ #1#2(#3,#4,#5){\definecolor{doggo@#1}{#2}{#3,#4,#5}}
 \@doggo@color@{black}RGB(47, 35, 22)
 \@doggo@color@{brown}RGB(186, 122, 61)
-\@doggo@color@{darker@brown}RGB(171, 112, 57)
 \def\@doggo@none{!hide}
 
 \def\doggo@color#1#2{\expandafter\def\csname doggo@color@#1\endcsname{#2}}
@@ -32,7 +31,7 @@
   % body
   body main/.code               = \doggo@color{body@main}{#1},
   body back/.code               = \doggo@color{body@back}{#1},
-  body/.style                   = {/doggo/body main={#1}, /doggo/body back={#1}},
+  body/.style                   = {/doggo/body main={#1}},
   height delta/.code            = \setlength{\doggo@h@delta}{#1},
   % nose
   nose/.code                    = \doggo@color{nose}{#1},
@@ -43,8 +42,8 @@
   collar/.code                  = \doggo@color{collar}{#1},
   collar ring/.code             = \doggo@color{collar@ring}{#1},
   defaults/.style               = {%
-    name=doggo, body main=doggo@brown, body back=doggo@darker@brown,
-    collar=blue!60!doggo@brown,collar ring=yellow!60!doggo@brown,
+    name=doggo, body main=doggo@brown, body back=\doggo@color@body@main!89!doggo@black,
+    collar=blue!60!\doggo@color@body@main,collar ring=yellow!60!\doggo@color@body@main,
     height delta=0pt,nose=doggo@black,eye=doggo@black,eye back=white,%
     user defaults%
   },
@@ -98,7 +97,7 @@
       coordinate[pos=.811] (fluff-3)
    ++(6.25mm,-1.25mm)
    % the front right leg
-   to[bend left=5] ++(.1mm,-7mm)
+   to[bend left=5] ++(.1mm,-7mm-\doggo@h@delta)
    to[bend right] [sharp corners] ++(.5mm,-1mm)
    % right front foot
    arc(-170:80:1.23mm and .4mm) [rounded corners=.3mm]
@@ -109,7 +108,7 @@
       coordinate[pos=.3] (leg-front-left)
       coordinate[pos=.9] (collar-ur)
       coordinate[pos=.85] (collar-ur2)
-   ++(4.06mm,9.05mm)
+   ++(4.06mm,9.05mm+\doggo@h@delta)
       coordinate (mouth-start)
    to[out=-3,in=260] ++(3.85mm,1.33mm)
       coordinate (nose-ur)
@@ -119,16 +118,16 @@
       coordinate[pos=.255] (ear-a)
       coordinate[pos=.585] (ear-b)
    -- cycle;
-   \doggo@block[rounded corners=.35mm]{\doggo@color@body@main} (leg-right-low) to[bend left=17] ++(-.325mm,-3.125mm) to[bend right=5] [sharp corners] ++(.89mm,-2.865mm) {[rotate=-5]
+   \doggo@block[rounded corners=.35mm]{\doggo@color@body@main} (leg-right-low) to[bend left=17] ++(-.325mm,-3.055mm-\doggo@h@delta/2) to[bend right=5] [sharp corners] ++(.89mm,-2.865mm-\doggo@h@delta/2) {[rotate=-5]
    arc[start angle=-170, end angle=94, x radius=1.2mm, y radius=.41mm]}
    [rounded corners=.35mm]
-   to[bend left=10]++(-.865mm,2.26mm) to[bend left=15] (leg-right-high);
+   to[bend left=10]++(-.865mm,2.2mm+\doggo@h@delta/2) to[bend left=15] (leg-right-high);
 
    \pgfonlayer{background}
    \doggo@block[rounded corners=.35mm]{\doggo@color@body@back} (leg-left-low) to[out=-88,in=-88,looseness=1.7] coordinate[pos=.1] (leg-left-low2) coordinate[pos=.51] (leg-left-high2) ([yshift=1mm]leg-left-high) to[bend right=50] cycle;
-   \doggo@block[rounded corners=.35mm]{\doggo@color@body@back} (leg-left-low2) to[bend left=9] ++(-.675mm,-2.5mm) to[bend right=6] [sharp corners] ++(.85mm,-2.1mm) {
+   \doggo@block[rounded corners=.35mm]{\doggo@color@body@back} (leg-left-low2) to[bend left=9] ++(-.695mm,-2.55mm-\doggo@h@delta/2) to[bend right=6] [sharp corners] ++(.87mm,-2.15mm-\doggo@h@delta/2) {
       [rotate=-4]
-      arc(-170:94:1.2mm and .41mm)} [rounded corners=.35mm] to[bend left=9] ++(-.845mm,2mm) to[bend left=14] (leg-left-high2);
+      arc(-170:94:1.2mm and .41mm)} [rounded corners=.35mm] to[bend left=9] ++(-.845mm,2.1mm+\doggo@h@delta/2) to[bend left=14] (leg-left-high2);
    \doggo@block[rounded corners=.35mm]{\doggo@color@body@back} (leg-front-left) to[bend right=14] ++(-1.9mm,-8.025mm) arc(90:-170:1.35mm and .41mm) to[bend left=25] cycle;
    \endpgfonlayer
    \doggo@block[rounded corners=.4mm]{\doggo@color@body@main} (tail-ll) arc(260:50:2.57mm and 3.115mm) coordinate (tail-c) to[out=165,in=201,looseness=2.3] (tail-lr);
@@ -136,15 +135,15 @@
    \doggo@block[rounded corners=.35mm]{\doggo@color@body@back} (ear-a) to[bend right=2] ++(.1mm,2.43mm) to[bend left=10] ++(-1.9mm,-1.8mm);
 \endpgfonlayer
 \doggo@block[rounded corners=.35mm]{\doggo@color@body@back} ([xshift=.1mm,yshift=-.1mm]ear-b) to[bend right=11] ++(-.4mm,2mm) to[bend right=11] ++(-1.45mm,-3.145mm) to[bend left=14] cycle;
-\doggo@block[rounded corners=.35mm]{doggo@brown!82!doggo@black} (ear-b) to[bend right=11] ++(-.285mm,1.5mm) to[bend right=11] ++(-1.225mm,-2.315mm) to[bend left=14] cycle;
+\doggo@block[rounded corners=.35mm]{\doggo@color@body@main!82!doggo@black} (ear-b) to[bend right=11] ++(-.285mm,1.5mm) to[bend right=11] ++(-1.225mm,-2.315mm) to[bend left=14] cycle;
    % \filldraw (ear-b) circle[radius=2mm];
 \scope
 \clip[rounded corners=.35mm] ([xshift=.08mm,yshift=.035mm]mouth-start) to[out=-3,in=260] ++(3.85mm,1.33mm) to[bend left=1] ++(-2.25mm,1.15mm) to[bend right=30] cycle;
 % nose
 \doggo@block{\doggo@color@nose} (nose-ur) ellipse[x radius=.45mm,y radius=.5mm];
-\doggo@draw[very thin,opacity=.9]{doggo@black!80!doggo@brown} (nose-ur)++(-.35mm,-.985mm) to[out=186,in=-10] ++(-3.3mm,.2mm);
+\doggo@draw[very thin,opacity=.9]{doggo@black} (nose-ur)++(-.35mm,-.985mm) to[out=186,in=-10] ++(-3.3mm,.2mm);
 \endscope
-% \doggo@fill{doggo@black!80!doggo@brown} (nose-ur)++(-.35mm,-.95mm) circle[radius=.05mm];
+% \doggo@fill{doggo@black!80!\doggo@color@body@main} (nose-ur)++(-.35mm,-.95mm) circle[radius=.05mm];
 % eye
 \scope
 \doggo@fill[save path=\eyepath]{\doggo@color@eye@back} (.18,.1175)++(-.565mm,0) to[bend left] ++(.75mm,.4mm) to[bend left] ++(-.04mm,-.866mm) to[bend left] cycle;
@@ -155,11 +154,11 @@
 \doggo@block[rounded corners=.05mm]{\doggo@color@collar} (collar-ul) to[bend right=9] ([xshift=.05mm]collar-ur) -- ([xshift=.05mm]collar-ur2) coordinate[pos=.5] (collar-uc) to[bend left=9] (collar-ul2) -- cycle;
 \doggo@draw{\doggo@color@collar@ring} ([xshift=.275mm,yshift=-.125mm]collar-uc) circle[radius=.266mm];
 % fluff
-\node[cloud,minimum width=11mm,fill=doggo@brown,scale=.6,rotate=-11,cloud puffs=35,cloud puff arc=100] at ([xshift=.184mm,yshift=.525mm]fluff-1) {};
-\node[cloud,minimum width=6mm,fill=doggo@brown,scale=.35,rotate=6,cloud puffs=13,cloud puff arc=100] at ([xshift=.1mm,yshift=-.295mm]tail-lr) {};
-\node[cloud,minimum width=6mm,fill=doggo@brown,scale=.3,rotate=80,cloud puffs=13,cloud puff arc=100] at ([xshift=.2mm,yshift=-.195mm]tail-ll) {};
-\node[cloud,minimum width=6mm,fill=doggo@brown,scale=.3,rotate=80,cloud puffs=13,cloud puff arc=100] at ([xshift=-.2mm,yshift=.495mm]leg-left-low) {};
-\node[cloud,minimum width=6mm,fill=doggo@brown,scale=.14,rotate=-18,cloud puffs=13,cloud puff arc=100,inner ysep=1pt] at ([xshift=-.297mm,yshift=.195mm]tail-c) {};
+\node[cloud,minimum width=11mm,fill=\doggo@color@body@main,scale=.6,rotate=-11,cloud puffs=35,cloud puff arc=100] at ([xshift=.184mm,yshift=.525mm]fluff-1) {};
+\node[cloud,minimum width=6mm,fill=\doggo@color@body@main,scale=.35,rotate=6,cloud puffs=13,cloud puff arc=100] at ([xshift=.1mm,yshift=-.295mm]tail-lr) {};
+\node[cloud,minimum width=6mm,fill=\doggo@color@body@main,scale=.3,rotate=80,cloud puffs=13,cloud puff arc=100] at ([xshift=.2mm,yshift=-.195mm]tail-ll) {};
+\node[cloud,minimum width=6mm,fill=\doggo@color@body@main,scale=.3,rotate=80,cloud puffs=13,cloud puff arc=100] at ([xshift=-.2mm,yshift=.495mm]leg-left-low) {};
+\node[cloud,minimum width=6mm,fill=\doggo@color@body@main,scale=.11,rotate=-18,cloud puffs=13,cloud puff arc=100,inner ysep=1pt] at ([xshift=-.297mm,yshift=.195mm]tail-c) {};
 \endscope
 \endgroup}
 
