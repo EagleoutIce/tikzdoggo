@@ -131,7 +131,7 @@
       arc(-170:94:1.2mm and .41mm)} [rounded corners=.35mm] to[bend left=9] ++(-.845mm,2mm) to[bend left=14] (leg-left-high2);
    \doggo@block[rounded corners=.35mm]{\doggo@color@body@back} (leg-front-left) to[bend right=14] ++(-1.9mm,-8.025mm) arc(90:-170:1.35mm and .41mm) to[bend left=25] cycle;
    \endpgfonlayer
-   \doggo@block[rounded corners=.4mm]{\doggo@color@body@main} (tail-ll) arc(260:50:2.77mm and 3.215mm) to[out=165,in=201,looseness=2.3] (tail-lr);
+   \doggo@block[rounded corners=.4mm]{\doggo@color@body@main} (tail-ll) arc(260:50:2.57mm and 3.115mm) coordinate (tail-c) to[out=165,in=201,looseness=2.3] (tail-lr);
 \pgfonlayer{background}
    \doggo@block[rounded corners=.35mm]{\doggo@color@body@back} (ear-a) to[bend right=2] ++(.1mm,2.43mm) to[bend left=10] ++(-1.9mm,-1.8mm);
 \endpgfonlayer
@@ -155,9 +155,11 @@
 \doggo@block[rounded corners=.05mm]{\doggo@color@collar} (collar-ul) to[bend right=9] ([xshift=.05mm]collar-ur) -- ([xshift=.05mm]collar-ur2) coordinate[pos=.5] (collar-uc) to[bend left=9] (collar-ul2) -- cycle;
 \doggo@draw{\doggo@color@collar@ring} ([xshift=.275mm,yshift=-.125mm]collar-uc) circle[radius=.266mm];
 % fluff
-\node[cloud,minimum width=8mm,fill=doggo@brown,scale=.6,rotate=-11,cloud puffs=19] at ([xshift=.1mm,yshift=.525mm]fluff-1) {};
-\node[cloud,minimum width=6mm,fill=doggo@brown,scale=.35,rotate=6,cloud puffs=13] at ([xshift=.1mm,yshift=-.295mm]tail-lr) {};
-\node[cloud,minimum width=6mm,fill=doggo@brown,scale=.3,rotate=80,cloud puffs=13] at ([xshift=.2mm,yshift=-.195mm]tail-ll) {};
+\node[cloud,minimum width=11mm,fill=doggo@brown,scale=.6,rotate=-11,cloud puffs=35,cloud puff arc=100] at ([xshift=.184mm,yshift=.525mm]fluff-1) {};
+\node[cloud,minimum width=6mm,fill=doggo@brown,scale=.35,rotate=6,cloud puffs=13,cloud puff arc=100] at ([xshift=.1mm,yshift=-.295mm]tail-lr) {};
+\node[cloud,minimum width=6mm,fill=doggo@brown,scale=.3,rotate=80,cloud puffs=13,cloud puff arc=100] at ([xshift=.2mm,yshift=-.195mm]tail-ll) {};
+\node[cloud,minimum width=6mm,fill=doggo@brown,scale=.3,rotate=80,cloud puffs=13,cloud puff arc=100] at ([xshift=-.2mm,yshift=.495mm]leg-left-low) {};
+\node[cloud,minimum width=6mm,fill=doggo@brown,scale=.14,rotate=-18,cloud puffs=13,cloud puff arc=100,inner ysep=1pt] at ([xshift=-.297mm,yshift=.195mm]tail-c) {};
 \endscope
 \endgroup}
 
