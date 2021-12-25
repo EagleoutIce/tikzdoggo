@@ -33,13 +33,16 @@
   body back/.code               = \doggo@color{body@back}{#1},
   body/.style                   = {/doggo/body main={#1}, /doggo/body back={#1}},
   height delta/.code            = \setlength{\doggo@h@delta}{#1},
+  % nose
+  nose/.code                    = \doggo@color{nose}{#1},
   % collar
   collar/.code                  = \doggo@color{collar}{#1},
   collar ring/.code             = \doggo@color{collar@ring}{#1},
   defaults/.style               = {%
     name=doggo, body main=doggo@brown, body back=doggo@darker@brown,
-    collar=blue!60!doggo@brown,collar ring=yellow!60!doggo@brown,user defaults,
-    height delta=0pt%
+    collar=blue!60!doggo@brown,collar ring=yellow!60!doggo@brown,
+    height delta=0pt,nose=doggo@black,%
+    user defaults%
   },
   user defaults/.style = {},
 }
@@ -132,8 +135,8 @@
 \scope
 \clip[rounded corners=.35mm] ([xshift=.1mm,yshift=.035mm]mouth-start) to[out=-3,in=260] ++(3.85mm,1.33mm) to[bend left=1] ++(-2.25mm,1.15mm) to[bend right=30] cycle;
 % nose
-\filldraw[doggo@black] (nose-ur) ellipse[x radius=.45mm,y radius=.5mm];
-\draw[doggo@black!80!doggo@brown,very thin] (nose-ur)++(0,-.95mm) to[out=186,in=-6] ++(-6.35mm,.533mm);
+\doggo@block{\doggo@color@nose} (nose-ur) ellipse[x radius=.45mm,y radius=.5mm];
+\doggo@draw[very thin,opacity=.9]{doggo@black!80!doggo@brown} (nose-ur)++(0,-.95mm) to[out=186,in=-6] ++(-6.35mm,.533mm);
 \endscope
 % eye
 \scope
