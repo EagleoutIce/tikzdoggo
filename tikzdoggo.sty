@@ -1,7 +1,7 @@
 \ProvidesPackage{tikzdoggo}[2021/12/25 version v1.0 doggos in TikZ]
 
 \RequirePackage{tikz}
-\usetikzlibrary{backgrounds,shapes.symbols}
+\usetikzlibrary{backgrounds,shapes.symbols,intersections}
 
 \colorlet{doggo-black}{black!95!white!81!brown}
 
@@ -37,8 +37,11 @@
 \draw[doggo-black!80!brown,very thin] (nose-ur)++(0,-.95mm) to[out=186,in=-6] ++(-6.35mm,.533mm);
 \endscope
 % eye
-\fill[white] (.134,.1175) ellipse[x radius=.445mm,y radius=.58mm];
-\fill[doggo-black] (.1415,.1175) ellipse[x radius=.265mm,y radius=.38mm];
+\scope
+\fill[white,save path=\eyepath] (.18,.1175)++(-.565mm,0) to[bend left] ++(.75mm,.4mm) to[bend left] ++(-.04mm,-.866mm) to[bend left] cycle;
+\clip[use path=\eyepath];
+\fill[doggo-black] (.15,.1135) arc(180:1:.5mm and .43mm) arc (1:-180:.5mm and .43mm);
+\endscope
 % collar
 \filldraw[blue!60!brown,rounded corners=.05mm] (collar-ul) to[bend right=9] ([xshift=.05mm]collar-ur) -- ([xshift=.05mm]collar-ur2) coordinate[pos=.5] (collar-uc) to[bend left=9] (collar-ul2) -- cycle;
 \draw[yellow!60!brown] ([xshift=.275mm,yshift=-.125mm]collar-uc) circle[radius=.266mm];
