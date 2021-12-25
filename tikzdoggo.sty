@@ -1,7 +1,7 @@
 \ProvidesPackage{tikzdoggo}[2021/12/25 version v1.0 doggos in TikZ]
 
 \RequirePackage{tikz}
-\usetikzlibrary{backgrounds,shapes.symbols,intersections}
+\usetikzlibrary{backgrounds,shapes.symbols,intersections,decorations.pathmorphing}
 
 % #region dimens
 % because i have written the dog before a height macro
@@ -72,6 +72,7 @@
    \doggo@block[rounded corners=.3mm]{\doggo@color@body@main}
    % start at back of ead
    (180:3.45mm) to[bend left=33]
+      coordinate[pos=0] (fluff-back)
       coordinate[pos=.1] (collar-ul)
       coordinate[pos=.19] (collar-ul2)
    ++(-.425cm,-.26cm)
@@ -86,10 +87,12 @@
       coordinate[pos=.442] (leg-right-low)
       coordinate[pos=.786] (leg-right-high)
       coordinate[pos=.895] (leg-left-low)
-   to[bend left=26]
+      coordinate[pos=1] (lower-belly-start)
+   to[bend left=26,looseness=.95]
       coordinate[pos=.54] (leg-left-high)
+      coordinate[pos=.85] (fluff-belly)
    % the higher belly
-   ++(4.9mm,1.15mm)
+   ++(4.9mm,1.15mm) coordinate (lower-belly-end)
    % the lower belly
    to[bend right=15]
       coordinate[pos=.75] (fluff-1)
@@ -106,6 +109,7 @@
    % leg front side
    to[bend right=7]
       coordinate[pos=.3] (leg-front-left)
+      coordinate[pos=.5] (fluff-front)
       coordinate[pos=.9] (collar-ur)
       coordinate[pos=.85] (collar-ur2)
    ++(4.06mm,9.05mm+\doggo@h@delta)
@@ -137,12 +141,6 @@
 \doggo@block[rounded corners=.35mm]{\doggo@color@body@back} ([xshift=.1mm,yshift=-.1mm]ear-b) to[bend right=11] ++(-.4mm,2mm) to[bend right=11] ++(-1.45mm,-3.145mm) to[bend left=14] cycle;
 \doggo@block[rounded corners=.35mm]{\doggo@color@body@main!82!doggo@black} (ear-b) to[bend right=11] ++(-.285mm,1.5mm) to[bend right=11] ++(-1.225mm,-2.315mm) to[bend left=14] cycle;
    % \filldraw (ear-b) circle[radius=2mm];
-\scope
-\clip[rounded corners=.35mm] ([xshift=.08mm,yshift=.035mm]mouth-start) to[out=-3,in=260] ++(3.85mm,1.33mm) to[bend left=1] ++(-2.25mm,1.15mm) to[bend right=30] cycle;
-% nose
-\doggo@block{\doggo@color@nose} (nose-ur) ellipse[x radius=.45mm,y radius=.5mm];
-\doggo@draw[very thin,opacity=.9]{doggo@black} (nose-ur)++(-.35mm,-.985mm) to[out=186,in=-10] ++(-3.3mm,.2mm);
-\endscope
 % \doggo@fill{doggo@black!80!\doggo@color@body@main} (nose-ur)++(-.35mm,-.95mm) circle[radius=.05mm];
 % eye
 \scope
@@ -150,15 +148,28 @@
 \clip[use path=\eyepath];
 \doggo@fill{\doggo@color@eye} (.15,.1135) arc(180:1:.5mm and .43mm) arc (1:-180:.5mm and .43mm);
 \endscope
+% fluff
+\node[cloud,minimum width=11mm,fill=\doggo@color@body@main,scale=.6,rotate=-11,cloud puffs=32+int(5*rand),cloud puff arc=100] at ([xshift=.184mm,yshift=.525mm]fluff-1) {};
+% \node[cloud,minimum width=14mm,fill=\doggo@color@body@main,scale=.5,rotate=7,cloud puffs=38+int(5*rand),cloud puff arc=100] at ([xshift=-.684mm,yshift=.575mm]fluff-belly) {};
+\node[cloud,minimum width=12mm,fill=\doggo@color@body@main,scale=.37,rotate=20,cloud puffs=26+int(2*rand),cloud puff arc=100] at ([xshift=.6mm,yshift=-.095mm]tail-lr) {};
+\node[cloud,minimum width=6mm,fill=\doggo@color@body@main,scale=.3,rotate=80,cloud puffs=13,cloud puff arc=100] at ([xshift=.2mm,yshift=-.195mm]tail-ll) {};
+\node[cloud,minimum width=9mm,fill=\doggo@color@body@main,scale=.325,rotate=80,cloud puffs=13,cloud puff arc=100] at ([xshift=-.15mm,yshift=.675mm]leg-left-low) {};
+\node[cloud,minimum width=6mm,fill=\doggo@color@body@main,scale=.11,rotate=-18,cloud puffs=13,cloud puff arc=100,inner ysep=1pt] at ([xshift=-.297mm,yshift=.195mm]tail-c) {};
+\node[cloud,minimum width=16mm,fill=\doggo@color@body@main,scale=.335,rotate=70,cloud puffs=16+int(4*rand),cloud puff arc=80] at ([xshift=-.262mm,yshift=.1mm]fluff-front) {};
+\node[cloud,minimum width=11mm,fill=\doggo@color@body@main,scale=.34,rotate=91,cloud puffs=27,cloud puff arc=100,inner ysep=1pt] at ([xshift=.387mm,yshift=.405mm]fluff-back) {};
+\node[cloud,minimum width=6.5mm,fill=\doggo@color@body@main,scale=.2,rotate=80,cloud puffs=14,cloud puff arc=100] at ([xshift=-.21mm,yshift=-.104mm-abs(rand)*.05mm]mouth-start) {};
+\node[cloud,minimum width=16.5mm,fill=\doggo@color@body@main,scale=.2,rotate=-5,cloud puffs=34+int(rand*4),cloud puff arc=100] at ([xshift=.22mm,yshift=.1mm+abs(rand)*.05mm]mouth-start) {};
+\doggo@draw[decoration={snake,amplitude=.066mm,segment length=.296mm},decorate]{\doggo@color@body@main} (lower-belly-start) to[bend left=26,looseness=.95] (lower-belly-end);
 % collar
 \doggo@block[rounded corners=.05mm]{\doggo@color@collar} (collar-ul) to[bend right=9] ([xshift=.05mm]collar-ur) -- ([xshift=.05mm]collar-ur2) coordinate[pos=.5] (collar-uc) to[bend left=9] (collar-ul2) -- cycle;
 \doggo@draw{\doggo@color@collar@ring} ([xshift=.275mm,yshift=-.125mm]collar-uc) circle[radius=.266mm];
-% fluff
-\node[cloud,minimum width=11mm,fill=\doggo@color@body@main,scale=.6,rotate=-11,cloud puffs=35,cloud puff arc=100] at ([xshift=.184mm,yshift=.525mm]fluff-1) {};
-\node[cloud,minimum width=6mm,fill=\doggo@color@body@main,scale=.35,rotate=6,cloud puffs=13,cloud puff arc=100] at ([xshift=.1mm,yshift=-.295mm]tail-lr) {};
-\node[cloud,minimum width=6mm,fill=\doggo@color@body@main,scale=.3,rotate=80,cloud puffs=13,cloud puff arc=100] at ([xshift=.2mm,yshift=-.195mm]tail-ll) {};
-\node[cloud,minimum width=6mm,fill=\doggo@color@body@main,scale=.3,rotate=80,cloud puffs=13,cloud puff arc=100] at ([xshift=-.2mm,yshift=.495mm]leg-left-low) {};
-\node[cloud,minimum width=6mm,fill=\doggo@color@body@main,scale=.11,rotate=-18,cloud puffs=13,cloud puff arc=100,inner ysep=1pt] at ([xshift=-.297mm,yshift=.195mm]tail-c) {};
+% mouth
+\scope
+\clip[rounded corners=.35mm] ([xshift=.08mm,yshift=.035mm]mouth-start) to[out=-3,in=260] ++(3.85mm,1.33mm) to[bend left=1] ++(-2.25mm,1.15mm) to[bend right=30] cycle;
+% nose
+\doggo@block{\doggo@color@nose} (nose-ur) ellipse[x radius=.45mm,y radius=.5mm];
+\doggo@draw[very thin,opacity=.9]{doggo@black} (nose-ur)++(-.35mm,-.985mm) to[out=186,in=-10] ++(-3.3mm,.2mm);
+\endscope
 \endscope
 \endgroup}
 
