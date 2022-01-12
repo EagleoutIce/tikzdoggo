@@ -119,8 +119,8 @@
    to[bend left=1] ++(-2.25mm,1.15mm)
    % the head for great bonks
    arc(-3:170:2.98mm and 2.9mm)
-      coordinate[pos=.325] (ear-a)
-      coordinate[pos=.45] (ear-b)
+      coordinate[pos=.38] (ear-a)
+      coordinate[pos=.47] (ear-b)
    -- cycle;
    \doggo@block[rounded corners=.35mm]{\doggo@color@body@main} (leg-right-low) to[bend left=17] ++(-.325mm,-3.055mm-\doggo@h@delta/2) to[bend right=5] [sharp corners] ++(.89mm,-2.865mm-\doggo@h@delta/2) {[rotate=-5]
    arc[start angle=-170, end angle=94, x radius=1.2mm, y radius=.41mm]}
@@ -136,9 +136,9 @@
    \endpgfonlayer
    \doggo@block[rounded corners=.4mm]{\doggo@color@body@main} (tail-ll) arc(260:50:2.57mm and 3.115mm) coordinate (tail-c) to[out=165,in=201,looseness=2.3] (tail-lr);
 \pgfonlayer{background}
-   \doggo@block[rounded corners=.1mm]{\doggo@color@body@back} (ear-a) to[bend right=2] ++(.2mm,3.13mm) to[bend left=7] ++(-2.15mm,-2.2mm);
+   \doggo@block[rounded corners=.1mm]{\doggo@color@body@back} (ear-a) to[bend right=2] ++(.2mm,2.93mm) to[bend left=7] ++(-2.15mm,-2.2mm);
 \endpgfonlayer
-\doggo@block[rounded corners=.1mm]{\doggo@color@body@main!95!doggo@black} ([xshift=.1mm,yshift=-.365mm]ear-b) to[bend right=11] ++(-.4mm,3mm) to[bend right=11] ++(-1.45mm,-3.55mm) to[bend left=14] ([xshift=.1mm,yshift=-.365mm]ear-b) [sharp corners]-- cycle;
+\doggo@block[rounded corners=.1mm]{\doggo@color@body@main!95!doggo@black} ([xshift=.1mm,yshift=-.365mm]ear-b) to[bend right=11] ++(-.4mm,2.9mm) to[bend right=11] ++(-1.45mm,-3.6mm) to[bend left=14] ([xshift=.1mm,yshift=-.365mm]ear-b) [sharp corners]-- cycle;
 \doggo@block[rounded corners=.1mm]{\doggo@color@body@main!87!doggo@black} ([yshift=-.2mm,xshift=-.1mm]ear-b) to[bend right=11] ++(-.25mm,2.45mm) to[bend right=11] ++(-1.04mm,-2.825mm) to[bend left=14] ([yshift=-.2mm]ear-b) [sharp corners] -- cycle;
    % \filldraw (ear-b) circle[radius=2mm];
 % \doggo@fill{doggo@black!80!\doggo@color@body@main} (nose-ur)++(-.35mm,-.95mm) circle[radius=.05mm];
