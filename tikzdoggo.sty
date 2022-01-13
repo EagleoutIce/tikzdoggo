@@ -114,11 +114,12 @@
       coordinate[pos=.85] (collar-ur2)
    ++(4.06mm,9.39mm+\doggo@h@delta)
       coordinate (mouth-start)
-   to[out=-3,in=260] ++(3.85mm,.99mm)
+   to[out=-3,in=265] ++(3.85mm,1.29mm)
+   % -- ++(.1mm,.2mm)
       coordinate (nose-ur)
    to[bend left=1] ++(-2.25mm,1.15mm)
    % the head for great bonks
-   arc(-3:170:2.98mm and 2.9mm)
+   arc(-3:170:2.98mm and 2.42mm)
       coordinate[pos=.38] (ear-a)
       coordinate[pos=.47] (ear-b)
    -- cycle;
@@ -151,8 +152,8 @@
 \node[cloud,minimum width=9mm,fill=\doggo@color@body@main,scale=.325,rotate=80,cloud puffs=13,cloud puff arc=100] at ([xshift=-.15mm,yshift=.675mm]leg-left-low) {};
 \node[cloud,minimum width=6mm,fill=\doggo@color@body@main,scale=.11,rotate=-18,cloud puffs=13,cloud puff arc=100,inner ysep=1pt] at ([xshift=-.297mm,yshift=.195mm]tail-c) {};
 \node[cloud,minimum width=17mm,fill=\doggo@color@body@main,scale=.335,rotate=70,cloud puffs=23+int(4*rand),cloud puff arc=80] at ([xshift=-.292mm,yshift=.1mm]fluff-front) {};
-\node[cloud,minimum width=11mm,fill=\doggo@color@body@main,scale=.34,rotate=91,cloud puffs=27,cloud puff arc=100,inner ysep=1pt] at ([xshift=.547mm,yshift=.7mm]fluff-back) {};
-\node[cloud,minimum width=7mm,fill=\doggo@color@body@main,scale=.34,rotate=0,cloud puffs=17,cloud puff arc=100,inner ysep=1pt] at ([xshift=2.547mm,yshift=3.3mm]fluff-back) {};
+\node[cloud,minimum width=11mm,fill=\doggo@color@body@main,scale=.34,rotate=91,cloud puffs=27,cloud puff arc=100,inner ysep=1pt] at ([xshift=.647mm,yshift=.7mm]fluff-back) {};
+\node[cloud,minimum width=7mm,fill=\doggo@color@body@main,scale=.34,rotate=0,cloud puffs=17,cloud puff arc=100,inner ysep=1pt] at ([xshift=2.547mm,yshift=2.42mm]fluff-back) {};
 \node[cloud,minimum width=6.5mm,fill=\doggo@color@body@main,scale=.2,rotate=80,cloud puffs=14,cloud puff arc=100] at ([xshift=-.24mm,yshift=-.104mm-abs(rand)*.05mm]mouth-start) {};
 \node[cloud,minimum width=16.5mm,fill=\doggo@color@body@main,scale=.2,rotate=-1.5,cloud puffs=34+int(rand*4),cloud puff arc=100] at ([xshift=1.72mm,yshift=.06mm+abs(rand)*.05mm]mouth-start) {};
 \doggo@draw[decoration={snake,amplitude=.066mm,segment length=.296mm},decorate]{\doggo@color@body@main} (lower-belly-start) to[bend left=26,looseness=.95] (lower-belly-end);
