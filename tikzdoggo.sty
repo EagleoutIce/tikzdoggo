@@ -167,11 +167,12 @@
 \doggo@block{\doggo@color@nose} (nose-ur) ellipse[x radius=.45mm,y radius=.5mm];
 \doggo@draw[very thin,opacity=.9]{doggo@black} (nose-ur)++(-.35mm,-.985mm) to[out=186,in=-10] ++(-3.3mm,.2mm);
 \endscope
+\def\low{.35mm}
 \pgfonlayer{background}
-   \doggo@block[rounded corners=.1mm]{\doggo@color@body@back} ([yshift=-.2mm]ear-a) to[bend right=2] ++(.2mm,2.93mm) to[bend left=7] ++(-2.15mm,-2.2mm);
+   \doggo@block[rounded corners=.1mm]{\doggo@color@body@back} ([yshift=-.4mm-\low]ear-a) to[bend right=2] ++(.2mm,2.93mm) to[bend left=7] ++(-2.15mm,-2.2mm);
 \endpgfonlayer
-\doggo@block[rounded corners=.1mm]{\doggo@color@body@main!95!doggo@black} ([xshift=.1mm,yshift=-.65mm]ear-b) to[bend right=11] ++(-.4mm,2.9mm) to[bend right=11] ++(-1.45mm,-3.6mm) to[bend left=14] ([xshift=.1mm,yshift=-.65mm]ear-b) [sharp corners]-- cycle;
-\doggo@block[rounded corners=.1mm]{\doggo@color@body@main!87!doggo@black} ([yshift=-.2mm-.3mm,xshift=-.1mm]ear-b) to[bend right=11] ++(-.25mm,2.45mm) to[bend right=11] ++(-1.04mm,-2.825mm) to[bend left=14] ([yshift=-.5mm]ear-b) [sharp corners] -- cycle;
+\doggo@block[rounded corners=.1mm]{\doggo@color@body@main!95!doggo@black} ([xshift=.1mm,yshift=-.75mm-\low]ear-b) to[bend right=11] ++(-.4mm,2.9mm) to[bend right=11] ++(-1.45mm,-3.6mm) to[bend left=14] ([xshift=.1mm,yshift=-.75mm-\low]ear-b) [sharp corners]-- cycle;
+\doggo@block[rounded corners=.1mm]{\doggo@color@body@main!87!doggo@black} ([yshift=-.3mm-.3mm-\low,xshift=-.1mm]ear-b) to[bend right=11] ++(-.25mm,2.45mm) to[bend right=11] ++(-1.04mm,-2.825mm) to[bend left=14] ([yshift=-.6mm-\low]ear-b) [sharp corners] -- cycle;
 \endscope
 \endgroup}
 
