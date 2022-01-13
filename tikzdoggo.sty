@@ -112,9 +112,9 @@
       coordinate[pos=.5] (fluff-front)
       coordinate[pos=.9] (collar-ur)
       coordinate[pos=.85] (collar-ur2)
-   ++(4.06mm,9.05mm+\doggo@h@delta)
+   ++(4.06mm,9.39mm+\doggo@h@delta)
       coordinate (mouth-start)
-   to[out=-3,in=260] ++(3.85mm,1.33mm)
+   to[out=-3,in=260] ++(3.85mm,.99mm)
       coordinate (nose-ur)
    to[bend left=1] ++(-2.25mm,1.15mm)
    % the head for great bonks
@@ -153,15 +153,15 @@
 \node[cloud,minimum width=17mm,fill=\doggo@color@body@main,scale=.335,rotate=70,cloud puffs=23+int(4*rand),cloud puff arc=80] at ([xshift=-.292mm,yshift=.1mm]fluff-front) {};
 \node[cloud,minimum width=11mm,fill=\doggo@color@body@main,scale=.34,rotate=91,cloud puffs=27,cloud puff arc=100,inner ysep=1pt] at ([xshift=.547mm,yshift=.7mm]fluff-back) {};
 \node[cloud,minimum width=7mm,fill=\doggo@color@body@main,scale=.34,rotate=0,cloud puffs=17,cloud puff arc=100,inner ysep=1pt] at ([xshift=2.547mm,yshift=3.3mm]fluff-back) {};
-\node[cloud,minimum width=6.5mm,fill=\doggo@color@body@main,scale=.2,rotate=80,cloud puffs=14,cloud puff arc=100] at ([xshift=-.21mm,yshift=-.104mm-abs(rand)*.05mm]mouth-start) {};
-\node[cloud,minimum width=16.5mm,fill=\doggo@color@body@main,scale=.2,rotate=-5,cloud puffs=34+int(rand*4),cloud puff arc=100] at ([xshift=.22mm,yshift=.1mm+abs(rand)*.05mm]mouth-start) {};
+\node[cloud,minimum width=6.5mm,fill=\doggo@color@body@main,scale=.2,rotate=80,cloud puffs=14,cloud puff arc=100] at ([xshift=-.2mm,yshift=-.104mm-abs(rand)*.05mm]mouth-start) {};
+\node[cloud,minimum width=16.5mm,fill=\doggo@color@body@main,scale=.2,rotate=-1.5,cloud puffs=34+int(rand*4),cloud puff arc=100] at ([xshift=1.72mm,yshift=.06mm+abs(rand)*.05mm]mouth-start) {};
 \doggo@draw[decoration={snake,amplitude=.066mm,segment length=.296mm},decorate]{\doggo@color@body@main} (lower-belly-start) to[bend left=26,looseness=.95] (lower-belly-end);
 % collar
 \doggo@block[rounded corners=.05mm]{\doggo@color@collar} (collar-ul) to[bend right=9] ([xshift=.05mm]collar-ur) -- ([xshift=.05mm]collar-ur2) coordinate[pos=.5] (collar-uc) to[bend left=9] (collar-ul2) -- cycle;
 \doggo@draw{\doggo@color@collar@ring} ([xshift=.275mm,yshift=-.125mm]collar-uc) circle[radius=.266mm];
 % mouth
 \scope
-\clip[rounded corners=.35mm] ([xshift=.08mm,yshift=.035mm]mouth-start) to[out=-3,in=260] ++(3.85mm,1.33mm) to[bend left=1] ++(-2.25mm,1.15mm) to[bend right=30] cycle;
+\clip[rounded corners=.35mm] ([xshift=.08mm,yshift=.035mm]mouth-start) to[out=-3,in=260] ++(3.85mm,.99mm) to[bend left=1] ++(-2.25mm,1.15mm) to[bend right=30] cycle;
 % nose
 \doggo@block{\doggo@color@nose} (nose-ur) ellipse[x radius=.45mm,y radius=.5mm];
 \doggo@draw[very thin,opacity=.9]{doggo@black} (nose-ur)++(-.35mm,-.985mm) to[out=186,in=-10] ++(-3.3mm,.2mm);
